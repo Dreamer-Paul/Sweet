@@ -5,8 +5,8 @@
     <title>奇趣保罗</title>
     <link href="static/32.png" rel="icon" sizes="32x32"/>
     <link href="static/192.png" rel="icon" sizes="192x192"/>
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <link href="static/paul.css" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body style="background-image: url('static/background-<?php echo rand(1, 6);?>.jpg');">
@@ -58,7 +58,7 @@ for($i = 0; $i < 6; $i++){
     }
 
     if($original){
-        echo '<a href="'.$xml->channel->item[$i]->link.'" target="_blank">'.$xml->channel->item[$i]->title.'<span class="meta">'.$date_year.".".$date_month.".".$date_day."</span></a>";
+        echo '<a href="'.$xml->channel->item[$i]->link.'" target="_blank">'.$xml->channel->item[$i]->title.'<span class="meta">'.$date_year.".".str_pad($date_month, 2, "0", STR_PAD_LEFT).".".$date_day."</span></a>";
         echo "\n";
     }
     else{
