@@ -33,39 +33,29 @@
 <?php
 error_reporting(0);
 
-// 请在参数区填写你的 Typecho 博客 RSS 地址
-$xml = simplexml_load_file('https://paugram.com/feed');
+// 设置你的博客 RSS 地址（WordPress、Typecho 均可）
+define("BLOG_URL", "https://paugram.com/feed");
 
-for($i = 0; $i < 6; $i++){
-    $original = $xml->channel->item[$i]->pubDate;
-    $date_year = substr($original, 12, 4);
-    $date_month;
-    $date_day = substr($original, 5, 2);
+$file = simplexml_load_file(BLOG_URL) -> channel -> item;
 
-    switch (substr($xml->channel->item[$i]->pubDate, 8, 3)){
-        case "Jan": $date_month = 1; break;
-        case "Feb": $date_month = 2; break;
-        case "Mar": $date_month = 3; break;
-        case "Apr": $date_month = 4; break;
-        case "May": $date_month = 5; break;
-        case "Jun": $date_month = 6; break;
-        case "Jul": $date_month = 7; break;
-        case "Aug": $date_month = 8; break;
-        case "Sep": $date_month = 9; break;
-        case "Oct": $date_month = 10; break;
-        case "Nov": $date_month = 11; break;
-        case "Dec": $date_month = 12; break;
-    }
+if(isset($file)){
+    for($i = 0; $i < 6; $i++){
+        $timestamp = strtotime($file[$i] -> pubDate);
+        $timestamp = date("y-m-d", $timestamp);
 
-    if($original){
-        echo '<a href="'.$xml->channel->item[$i]->link.'" target="_blank">'.$xml->channel->item[$i]->title.'<span class="meta">'.$date_year.".".str_pad($date_month, 2, "0", STR_PAD_LEFT).".".$date_day."</span></a>";
-        echo "\n";
-    }
-    else{
-        echo "<a>博客连接失败<span class='meta'>请检查</span></a>";
-        echo "\n";
+        if($file[$i]){
+            echo '<a href="' . $file[$i] -> link . '" target="_blank">' .$file[$i] -> title . '<span class="meta">' . $timestamp . "</span></a>";
+            echo "\n";
+        }
+        else{
+            break;
+        }
     }
 }
+else{
+    echo "<a>博客连接失败<span class='meta'>请检查</span></a>";
+}
+
 ?>
         </section>
         <section id="products">
