@@ -4,12 +4,11 @@
 
 # Sweet
 # By: Dreamer-Paul
-# Last Update: 2017.12.19
+# Last Update: 2020.7.22
 
 一个简洁的个人首页，可以调用博客最新文章。
 
-欢迎你加入缤奇，和我们一起改变世界。
-本项目为奇趣保罗原创，并遵守 MIT 开源协议。欢迎访问我的博客：https://paugram.com
+本代码为奇趣保罗原创，并遵守 MIT 开源协议。欢迎访问我的博客：https://paugram.com
 
 ---- */
 
@@ -43,7 +42,7 @@ body{
     font-weight: lighter;
     vertical-align: middle;
     background: #fff center/cover no-repeat fixed;
-    font: 16px/1 '思源黑体 CN', 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    font: 16px/1.5 '思源黑体 CN', 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
 }
 
 @media screen and (min-width: 1930px){
@@ -110,6 +109,7 @@ main{
     vertical-align: middle;
 }
 main .content{
+    width: 20em;
     padding: 1em;
     margin: 3em 1em;
     background: #fff;
@@ -187,17 +187,24 @@ main section.active{
 #articles, #products{
     text-align: left;
 }
-#articles a, #products a{
+#articles a,#products a {
     color: #222;
     display: block;
-    margin-bottom: 1em;
+    overflow: hidden;
+    position: relative;
+
+    padding-right: 5em;
+    margin-bottom: .5em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 #articles a:last-child, #products a:last-child{
     margin-bottom: 0;
 }
 #articles .meta, #products .meta{
+    right: 0;
     color: #999;
-    float: right;
+    position: absolute;
 }
 
 /* - 关于 */
