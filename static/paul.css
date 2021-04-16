@@ -4,7 +4,7 @@
 
 # Sweet
 # By: Dreamer-Paul
-# Last Update: 2020.7.22
+# Last Update: 2021.4.17
 
 一个简洁的个人首页，可以调用博客最新文章。
 
@@ -21,6 +21,9 @@ html, body{
 *{
     margin: 0;
     padding: 0;
+}
+
+*, *:before, *:after{
     box-sizing: border-box;
 }
 
@@ -33,12 +36,19 @@ h1, h2, h3, h4, h5, h6{
     font-weight: lighter;
 }
 
+p{
+    margin-bottom: 1em;
+}
+p:last-child{
+    margin-bottom: 0;
+}
+
 body{
     color: #222;
     width: 100%;
     margin: auto;
     display: table;
-    max-width: 22em;
+    max-width: 20em;
     font-weight: lighter;
     vertical-align: middle;
     background: #fff center/cover no-repeat fixed;
@@ -51,6 +61,14 @@ body{
     }
 }
 
+.text-right{
+    text-align: right;
+}
+
+.text-center{
+    text-align: center;
+}
+
 /* 1 - 载入动画
 -------------------------------- */
 #loader{
@@ -59,8 +77,9 @@ body{
     right: 0;
     bottom: 0;
     z-index: 6;
+    display: none;
     position: fixed;
-    display: flex;
+    /* display: flex; */
     background: #fff;
     align-items: center;
     flex-direction: column;
@@ -104,18 +123,17 @@ body{
 /* 2 - 正文
 -------------------------------- */
 main{
-    user-select: none;
+    max-width: 25em;
     display: table-cell;
     vertical-align: middle;
 }
 main .content{
-    width: 20em;
+    width: 100%;
     padding: 1em;
-    margin: 3em 1em;
+    margin: 3em 0;
     background: #fff;
-    text-align: center;
     border-radius: 5px;
-    animation: content .5s 2.2s both;
+    /* animation: content .5s 2.2s both; */
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
 }
 
@@ -133,6 +151,8 @@ main .content{
 /* - 作者 */
 main .me{
     margin-top: -3em;
+    margin-bottom: 1em;
+    text-align: center;
 }
 main .me .avatar{
     max-width: 6em;
@@ -146,28 +166,32 @@ main .me .name{
 /* - 段落 */
 main section{
     display: none;
-    margin: 1.5em 0;
-    min-height: 12em;
+    margin: 2em 0;
+    animation: section .3s;
 }
 main section.active{
     display: block;
 }
 
+@keyframes section {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 /* - 首页 */
 #main{
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    grid-gap: 3.25em 1em;
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr);
 }
 #main.active{
-    display: flex;
+    display: grid;
 }
 #main a{
-    width: 33.333%;
-    padding: .5em 0;
-    border-radius: 1em;
-    display: inline-block;
     transition: transform .3s;
 }
 #main a:hover{
@@ -184,17 +208,15 @@ main section.active{
 }
 
 /* - 文章和作品 */
-#articles, #products{
-    text-align: left;
-}
-#articles a,#products a {
-    color: #222;
+#articles a, #products a{
+    color: inherit;
     display: block;
+    max-width: 18em;
     overflow: hidden;
     position: relative;
 
     padding-right: 5em;
-    margin-bottom: .5em;
+    margin-bottom: .75em;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -209,37 +231,39 @@ main section.active{
 
 /* - 关于 */
 #about{
-    text-align: left;
     line-height: 1.8;
 }
 
 /* - 操作 */
 .actions{
+    display: flex;
     color: #fff;
+    user-select: none;
     background: #1979ca;
     margin: 0 -1em -1em -1em;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 .actions .item{
-    width: 18%;
-    margin: .75em 0;
+    flex: 1;
+    padding: .75em 0;
     cursor: pointer;
+    position: relative;
     text-align: center;
     display: inline-block;
     transition: transform .3s;
 }
 .actions .item.active{
-    transform: scale(1.15);
     text-shadow: 0 0 5px #fff;
 }
-.actions .item .fa{
-    font-size: 1.5em;
-    margin-bottom: .35em;
-}
-.actions .item .title{
+.actions .item.active:before{
+    top: -1em;
+    left: calc(50% - .5em);
+    content: "";
     display: block;
-    font-size: .85em;
+    position: absolute;
+    border: .5em solid transparent;
+    border-bottom-color: #1979ca;
 }
 
 /* 3 - 页尾

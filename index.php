@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
-<body style="background-image: url('static/background-<?php echo rand(1, 6);?>.jpg');">
+<body style="background-image: url('static/background-<?php echo rand(1, 7);?>.jpg');">
 <div id="loader">
     <figure>
-        <img src="./static/avatar.jpg"/>
+        <img src="static/avatar.jpg"/>
     </figure>
 </div>
 <main>
@@ -22,10 +22,10 @@
             <h2 class="name">奇趣保罗</h2>
         </figure>
         <section id="main" class="active">
-            <a href="https://paugram.com"><i class="fa fa-home"></i><span class="title">博客</span></a>
-            <a href="http://weibo.com/234891753/" target="_blank"><i class="fa fa-weibo"></i><span class="title">微博</span></a>
-            <a href="http://music.163.com/#/user/home?id=7041859" target="_blank"><i class="fa fa-music"></i><span class="title">网易云</span></a>
-            <a href="http://steamcommunity.com/id/dreamer-paul/" target="_blank"><i class="fa fa-steam"></i><span class="title">Steam</span></a>
+            <a href="https://paul.ren" title="深入浅出，日常折腾记录"><i class="fa fa-home"></i><span class="title">小窝</span></a>
+            <a href="https://paugram.com" title="分享技术与生活"><i class="fa fa-book"></i><span class="title">博客</span></a>
+            <a href="http://music.163.com/#/user/home?id=7041859" target="_blank" title="来听歌吧"><i class="fa fa-music"></i><span class="title">网易云</span></a>
+            <a href="http://steamcommunity.com/id/dreamer-paul/" target="_blank" title="找我"><i class="fa fa-steam"></i><span class="title">Steam</span></a>
             <a href="https://github.com/dreamer-paul/" target="_blank"><i class="fa fa-github"></i><span class="title">GitHub</span></a>
             <a href="https://space.bilibili.com/124512959/" target="_blank"><i class="fa fa-flag"></i><span class="title">哔哩哔哩</span></a>
         </section>
@@ -44,7 +44,7 @@ if(isset($file)){
         $timestamp = date("y-m-d", $timestamp);
 
         if($file[$i]){
-            echo '<a href="' . $file[$i] -> link . '" target="_blank">' .$file[$i] -> title . '<span class="meta">' . $timestamp . "</span></a>";
+            echo '<a href="' . $file[$i] -> link . '" target="_blank">' . $file[$i] -> title . '<span class="meta">' . $timestamp . "</span></a>";
             echo "\n";
         }
         else{
@@ -59,38 +59,39 @@ else{
 ?>
         </section>
         <section id="products">
-            <a class="item" href="https://kico.binkic.com/style" target="_blank">Kico Style<span class="meta">极简前端框架</span></a>
-            <a class="item" href="https://kico.binkic.com/player" target="_blank">Kico Player<span class="meta">极简音乐播放器</span></a>
-            <a class="item" href="javascript:alert('没做好啊，来打我啊~');">Kico Tools<span class="meta">在线时钟小程序</span></a>
-            <a class="item" href="https://github.com/Dreamer-Paul/Single" target="_blank">Single<span class="meta">以单身为灵感的主题</span></a>
-            <a class="item" href="https://www.binkic.com" target="_blank">缤奇官网<span class="meta">采用 TC 开发的团队官网</span></a>
-            <a class="item" href="https://dreamer-paul.github.io/Meeting" target="_blank">梦想主题晨会<span class="meta">以梦想为主题的班级晨会</span></a>
+            <a class="item" href="https://works.paugram.com/style" target="_blank">
+                奇趣框架<span class="meta">简洁优雅的基础 CSS 框架</span>
+            </a>
+            <a class="item" href="https://github.com/Dreamer-Paul/Pio" target="_blank">
+                看板娘插件<span class="meta">在博客上显示看板娘</span>
+            </a>
+            <a class="item" href="https://s.paul.ren">
+                奇趣起始页<span class="meta">开源的极简起始页</span>
+            </a>
+            <a class="item" href="https://github.com/Dreamer-Paul/Single" target="_blank">
+                Single<span class="meta">以单身为灵感创作的主题</span>
+            </a>
+            <a class="item" href="https://github.com/Dreamer-Paul/Fantasy" target="_blank">
+                Fantasy<span class="meta">动漫少女粉博客主题</span>
+            </a>
+            <a class="item" href="https://api.paugram.com" target="_blank">
+                保罗 API<span class="meta">免费实用的公益 API</span>
+            </a>
         </section>
         <section id="about">
-            <p>我是一个热爱钻研计算机技术的青少年，从小开始对计算机有极大的兴趣。目前我专注网站开发领域。我还自己发起建立了一个制作游戏的团队，希望能和大家合作，一同创造出属于我们自己的原创作品。<a href="https://paugram.com/about.html" target="_blank">详细阅读</a></p>
+            <p>我是保罗，一个学习中的前后端全栈程序员，貌似对设计更有天赋，对 jQuery + Bootstrap 及其实现方式较为熟悉，在 Vue + React + 小程序均有一定的开发经验，目前在学 TypeScript 和 NextJS。喜欢造轮子，热衷于分析设计思路与研究实现原理。</p>
+            <p class="text-center"><a href="https://paul.ren/about" target="_blank">详细阅读</a></p>
         </section>
         <div class="actions">
-            <div class="item home active">
-                <i class="fa fa-star"></i>
-                <span class="title">首页</span>
-            </div>
-            <div class="item article">
-                <i class="fa fa-book"></i>
-                <span class="title">文章</span>
-            </div>
-            <div class="item product">
-                <i class="fa fa-trophy"></i>
-                <span class="title">作品</span>
-            </div>
-            <div class="item about">
-                <i class="fa fa-graduation-cap"></i>
-                <span class="title">关于我</span>
-            </div>
+            <span class="item home active" title="找到我">首页</span>
+            <span class="item article" title="近期文章">文章</span>
+            <span class="item product" title="精选作品">作品</span>
+            <span class="item about" title="关于我">关于我</span>
         </div>
     </div>
 </main>
 <footer>
-    <p>© <?php echo date(Y)?> By <a href="https://paugram.com">Dreamer-Paul</a>.</p>
+    <p>© <?php echo date("Y")?> By <a href="https://paugram.com">Dreamer-Paul</a>.</p>
 </footer>
 
 <script src="static/paul.js"></script>
